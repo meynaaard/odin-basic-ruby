@@ -8,12 +8,14 @@ My algorithm:
    index as `day` starting from 0 and the `price` for each day
 3. Nest another iteration to check for potential `sell_day`, skip the day if it
    is less than or equal the current `day`
+4. Calculate profit by subtracting the `price` from the `sell_price`
 =end
 
 def stock_picker(stock_prices)
   stock_prices.each_with_index do |price, day|
     stock_prices.each_with_index do |sell_price, sell_day|
       next if sell_day <= day
+      profit = sell_price - price
       binding.pry
     end
   end
