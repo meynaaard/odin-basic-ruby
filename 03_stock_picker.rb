@@ -15,6 +15,7 @@ My algorithm:
     max_profit = profit
 7. Add `best_days` empty array
 8. Assign the buy and sell days to `best_days` inside the `max_profit` check
+9. Return the `best_days` array
 =end
 
 def stock_picker(stock_prices)
@@ -23,7 +24,7 @@ def stock_picker(stock_prices)
 
   stock_prices.map.with_index do |buy_price, buy_day|
     stock_prices.map.with_index do |sell_price, sell_day|
-      next if sell_day <= buy_day
+      next if sell_day <= buy_day # skip the days that has already passed
       profit = sell_price - buy_price
 
       # this determines the best days to buy and sell
@@ -33,6 +34,8 @@ def stock_picker(stock_prices)
       end
     end
   end
+
+  best_days
 end
 
-stock_picker([17,3,6,9,15,8,6,1,10])
+p stock_picker([17,3,6,9,15,8,6,1,10])
