@@ -17,7 +17,7 @@ My Algorithm:
     shifted_value > uppercase end, subtract 26, otherwise return as is
    ELSE
     return code
-8. #map shifted_values back to a caesar cipher string using #chr then #join
+8. #map shifted_values to its caesar cipher string using #chr then #join
 =end
 
 def caesar_cipher(string, key)
