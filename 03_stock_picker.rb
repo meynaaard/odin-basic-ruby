@@ -13,19 +13,23 @@ My algorithm:
 6. Keep track of max_profit by comparing it to the current `profit`
   IF `profit` greater than `max_profit`
     max_profit = profit
+7. Add `best_days` empty array
+8. Assign the buy and sell days to `best_days` inside the `max_profit` check
 =end
 
 def stock_picker(stock_prices)
   max_profit = 0
+  best_days = []
 
   stock_prices.map.with_index do |buy_price, buy_day|
     stock_prices.map.with_index do |sell_price, sell_day|
       next if sell_day <= buy_day
       profit = sell_price - buy_price
 
+      # this determines the best days to buy and sell
       if profit > max_profit
         max_profit = profit
-        binding.pry
+        best_days = [buy_day, sell_day]
       end
     end
   end
