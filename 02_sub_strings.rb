@@ -19,8 +19,8 @@ My algorithm:
 def substrings(string, substring_list)
   substring_list.reduce({}) do |substring_tally, substring|
     substring_count = string.downcase.scan(substring).count
-    substring_tally[substring] = substring_count
-    substring_tally.reject { |_, count| count == 0 }
+    substring_tally[substring] = substring_count if substring_count > 0
+    substring_tally
   end
 end
 
