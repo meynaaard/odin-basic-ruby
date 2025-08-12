@@ -8,15 +8,25 @@ My algorithm:
    index as `buy_day` starting from 0 and the `buy_price` for each day
 3. Nest another iteration to check for potential `sell_day`, skip the day if it
    is less than or equal to `buy_day`
-4. Calculate profit by subtracting the `buy_price` from the `sell_price`
+4. Calculate `profit` by subtracting the `buy_price` from the `sell_price`
+5. Add `max_profit` variable, initialize to 0,
+6. Keep track of max_profit by comparing it to the current `profit`
+  IF `profit` greater than `max_profit`
+    max_profit = profit
 =end
 
 def stock_picker(stock_prices)
-  stock_prices.each_with_index do |buy_price, buy_day|
-    stock_prices.each_with_index do |sell_price, sell_day|
+  max_profit = 0
+
+  stock_prices.map.with_index do |buy_price, buy_day|
+    stock_prices.map.with_index do |sell_price, sell_day|
       next if sell_day <= buy_day
       profit = sell_price - buy_price
-      binding.pry
+
+      if profit > max_profit
+        max_profit = profit
+        binding.pry
+      end
     end
   end
 end
