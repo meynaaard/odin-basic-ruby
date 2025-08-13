@@ -11,13 +11,15 @@ My Algorithm:
 5. Create a new variable called `shifted_values` that #map over `ascii_values`
    with iterator `code`
 6. Add a variable `shifted_value` that adds `key` to `code`
-7. IF code is covered within lowercase
-    shifted_value > lowercase end, subtract 26, otherwise return as is
+7. Create a method called #wrap_around that accepts two arguments: `first_value`
+   and `shifted_value` return ((shifted_value - first_value) % 26) + first_value
+8. IF code is covered within lowercase
+    call #wrap_around with arguments lowercase.begin, shifted_value
    ELSIF code is covered within uppercase
-    shifted_value > uppercase end, subtract 26, otherwise return as is
+    call #wrap_around with arguments uppercase.begin, shifted_value
    ELSE
     return code
-8. #map shifted_values to its caesar cipher string using #chr then #join
+9. #map shifted_values to its caesar cipher string using #chr then #join
 =end
 
 def caesar_cipher(string, key)
