@@ -29,15 +29,19 @@ def caesar_cipher(string, key)
   shifted_values = ascii_values.map do |code|
     shifted_value = code + key
     if lowercase.cover?(code)
-      shifted_value > lowercase.end ? shifted_value - 26 : shifted_value
+      wrap_around(lowercase.begin, shifted_value)
     elsif uppercase.cover?(code)
-      shifted_value > uppercase.end ? shifted_value - 26 : shifted_value
+      wrap_around(uppercase.begin, shifted_value)
     else
       code
     end
   end
 
   shifted_values.map { |code| code.chr }.join
+end
+
+def wrap_around(first_value, shifted_value)
+  ((shifted_value - first_value) % 26) + first_value
 end
 
 puts caesar_cipher("What a string!", 5)
