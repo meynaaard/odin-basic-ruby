@@ -11,9 +11,10 @@ My algorithm:
 4. Chain #scan to get substring occurrence where argument is `substring`
 5. Chain #count to get count of the scanned occurrence
 6. Assign these chained methods to variable `substring_count`
-7. Add key/value pair by using `substring` as key and the `substring_count` as
-   value for the `substring_tally` hash
-8. Reject all pairs that have a value of 0, as they are irrelevant for the tally
+7. IF substring_count greater than 0 THEN
+     Add key/value pair by using `substring` as key and the `substring_count`
+     as value for the `substring_tally` hash
+   ENDIF
 =end
 
 def substrings(string, substring_list)
