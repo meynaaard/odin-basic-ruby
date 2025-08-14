@@ -22,8 +22,8 @@ def stock_picker(stock_prices)
   max_profit = 0
   best_days = []
 
-  stock_prices.map.with_index do |buy_price, buy_day|
-    stock_prices.map.with_index do |sell_price, sell_day|
+  stock_prices.each_with_index do |buy_price, buy_day|
+    stock_prices.each_with_index do |sell_price, sell_day|
       next if sell_day <= buy_day # skip the days that has already passed
       profit = sell_price - buy_price
 
