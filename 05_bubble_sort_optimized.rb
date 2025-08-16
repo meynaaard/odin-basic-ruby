@@ -3,7 +3,7 @@ require "pry-byebug"
 def bubble_sort(array)
   iteration = 1
 
-  loop do
+  while iteration < array.length
     is_sorted = true
 
     (array.length - iteration).times do |i|
